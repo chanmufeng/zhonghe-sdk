@@ -19,7 +19,7 @@ public class SignUtil {
     private Long timestamp;
     private String signature;
 
-    public BaseRequestVo update(Map<String, Object> params, String appKey,String appSecret) {
+    public BaseRequestVo update(Map<String, Object> params, String appKey, String appSecret) {
         BaseRequestVo request = new BaseRequestVo();
         timestamp = System.currentTimeMillis() / 1000;
         BaseRequestVo.SystemDTO systemDTO = new BaseRequestVo.SystemDTO();

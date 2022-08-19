@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @author huiyingzhang
  * @ClassName ConcurrentHashMapCache
- * @description  自定义缓存数据
+ * @description 自定义缓存数据
  * @date 2022/8/15 14:08
  */
 @Slf4j
@@ -21,7 +21,7 @@ public class ConcurrentHashMapCache {
     /**
      * 每个缓存生效时间12小时
      */
-    private static long CACHE_HOLD_TIME_12H  = 12 * 60 * 60 * 1000L;
+    private static long CACHE_HOLD_TIME_12H = 12 * 60 * 60 * 1000L;
 
     /**
      * api调用的accessToken redis key access_token:appKey
@@ -49,7 +49,7 @@ public class ConcurrentHashMapCache {
         CACHE_MAP.put(cacheName, obj);
         // 设置缓存失效时间
         CACHE_MAP.put(cacheName + "_HoldTime", System.currentTimeMillis() + holdTime);
-        log.info("{}：成功存入缓存！ 过期时间：{}", cacheName, holdTime);
+        log.info("{}：成功存入缓存！ 过期时间：{}", cacheName, System.currentTimeMillis() + holdTime);
     }
 
     /**

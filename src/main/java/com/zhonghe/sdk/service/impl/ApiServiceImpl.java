@@ -19,7 +19,7 @@ import static com.zhonghe.sdk.cache.ConcurrentHashMapCache.ACCESS_TOKEN_KEY;
 /**
  * @author huiyingzhang
  * @ClassName ApiServiceImpl
- * @description
+ * @description api调用接口
  * @date 2022/8/11 16:48
  */
 @Service
