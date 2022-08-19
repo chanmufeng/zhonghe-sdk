@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * @author huiyingzhang
  * @ClassName ApiService
- * @description
+ * @description api调用接口
  * @date 2022/8/11 16:47
  */
 public interface ApiService {
