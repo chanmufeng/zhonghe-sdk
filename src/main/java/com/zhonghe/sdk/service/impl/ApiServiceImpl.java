@@ -6,7 +6,7 @@ import com.zhonghe.sdk.cache.ConcurrentHashMapCache;
 import com.zhonghe.sdk.config.ApiConfiguration;
 import com.zhonghe.sdk.constant.HttpStatus;
 import com.zhonghe.sdk.domain.BaseRequestVo;
-import com.zhonghe.sdk.service.ObtainTokenService;
+import com.zhonghe.sdk.service.ApiService;
 import com.zhonghe.sdk.util.HttpGetWithEntity;
 import com.zhonghe.sdk.util.SignUtil;
 import org.springframework.stereotype.Service;
@@ -18,12 +18,12 @@ import static com.zhonghe.sdk.cache.ConcurrentHashMapCache.ACCESS_TOKEN_KEY;
 
 /**
  * @author huiyingzhang
- * @ClassName ObtainTokenServiceImpl
+ * @ClassName ApiServiceImpl
  * @description
  * @date 2022/8/11 16:48
  */
 @Service
-public class ObtainTokenServiceImpl implements ObtainTokenService {
+public class ApiServiceImpl implements ApiService {
 
     /**
      * 获取配置中的appKey
