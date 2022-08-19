@@ -1,9 +1,9 @@
 package com.zhonghe.sdk.config;
 
 import com.zhonghe.sdk.ApiException;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 
 /**

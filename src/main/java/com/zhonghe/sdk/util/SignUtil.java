@@ -1,14 +1,10 @@
 package com.zhonghe.sdk.util;
 
 import com.zhonghe.sdk.domain.BaseRequestVo;
-import com.zhonghe.sdk.service.ObtainTokenService;
-import com.zhonghe.sdk.service.impl.ObtainTokenServiceImpl;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 

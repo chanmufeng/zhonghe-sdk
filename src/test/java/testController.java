@@ -1,6 +1,6 @@
 import com.zhonghe.sdk.ZhongheApplication;
 import com.zhonghe.sdk.config.ApiConfiguration;
-import com.zhonghe.sdk.service.ObtainTokenService;
+import com.zhonghe.sdk.service.ApiService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class testController {
 
     @Autowired
-    ObtainTokenService obtainTokenService;
+    ApiService apiService;
 
     @Autowired
     private ApiConfiguration apiConfiguration;
@@ -30,31 +30,31 @@ public class testController {
 
     @Test
     public void test1(){
-        Object s = obtainTokenService.getDeviceList(1, 10);
+        Object s = apiService.getDeviceList(1, 10);
         System.out.println("s = " + s);
     }
 
     @Test
     public void test2() {
-        Object s = obtainTokenService.getDeviceLatestData("DE2DB30823F1");
+        Object s = apiService.getDeviceLatestData("DE2DB30823F1");
         System.out.println("s = " + s);
     }
 
     @Test
     public void test3() {
-        Object s = obtainTokenService.getDeviceOrder("DE2DB30823F1", "DE2DB30823F101", 1);
+        Object s = apiService.getDeviceOrder("DE2DB30823F1", "DE2DB30823F101", 1);
         System.out.println("s = " + s);
     }
 
     @Test
     public void test4() {
-        Object s = obtainTokenService.getPestStationList(1, 10);
+        Object s = apiService.getPestStationList(1, 10);
         System.out.println("s = " + s);
     }
 
     @Test
     public void test5() {
-        Object s = obtainTokenService.getPestStationLatestData("171CB7400943");
+        Object s = apiService.getPestStationLatestData("171CB7400943");
         System.out.println("s = " + s);
     }
 
@@ -62,7 +62,7 @@ public class testController {
     public void test6() {
         String dateStr = "2022-05-13";
 
-        Object s = obtainTokenService.getPestStationDayReports("171CB7400943", dateStr);
+        Object s = apiService.getPestStationDayReports("171CB7400943", dateStr);
         System.out.println("s = " + s);
     }
 }

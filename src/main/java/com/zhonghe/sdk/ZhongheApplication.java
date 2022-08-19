@@ -14,8 +14,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 public class ZhongheApplication {
 
     public static void main(String[] args) {
-        // System.setProperty("spring.devtools.restart.enabled", "false");
         SpringApplication.run(ZhongheApplication.class, args);
-        System.out.println("哈哈哈哈哈哈 = ");
+        System.out.println("众禾api接口启动成功");
     }
 }

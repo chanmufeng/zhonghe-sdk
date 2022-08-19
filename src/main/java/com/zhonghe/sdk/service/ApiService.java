@@ -4,11 +4,11 @@ import java.util.Date;
 
 /**
  * @author huiyingzhang
- * @ClassName ObtainTokenService
+ * @ClassName ApiService
  * @description
  * @date 2022/8/11 16:47
  */
-public interface ObtainTokenService {
+public interface ApiService {
 
     /**
      * @param appKey
