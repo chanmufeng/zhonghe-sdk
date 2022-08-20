@@ -10,16 +10,14 @@ import java.util.TreeMap;
 
 /**
  * @author huiyingzhang
- * @ClassName SignUtil
- * @description 计算签名
- * @date 2022/8/11 15:52
+ * 计算签名
  */
 public class SignUtil {
 
-    private Long timestamp;
-    private String signature;
+    private static Long timestamp;
+    private static String signature;
 
-    public BaseRequestVo update(Map<String, Object> params, String appKey, String appSecret) {
+    public static BaseRequestVo update(Map<String, Object> params, String appKey, String appSecret) {
         BaseRequestVo request = new BaseRequestVo();
         timestamp = System.currentTimeMillis() / 1000;
         BaseRequestVo.SystemDTO systemDTO = new BaseRequestVo.SystemDTO();
@@ -33,7 +31,7 @@ public class SignUtil {
         return request;
     }
 
-    private String ComputeSign(BaseRequestVo request, String appSecret) {
+    private static String ComputeSign(BaseRequestVo request, String appSecret) {
         BaseRequestVo.SystemDTO system = request.getSystem();
         Map<String, Object> map = request.getParams();
 
@@ -61,7 +59,7 @@ public class SignUtil {
      * @param map
      * @return
      */
-    private Map<String, Object> sortMapByKey(Map<String, Object> map) {
+    private static Map<String, Object> sortMapByKey(Map<String, Object> map) {
         if (map == null || map.isEmpty()) {
             return null;
         }

@@ -9,9 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author huiyingzhang
- * @ClassName ConcurrentHashMapCache
- * @description 自定义缓存数据
- * @date 2022/8/15 14:08
+ * 自定义缓存数据
  */
 @Slf4j
 public class ConcurrentHashMapCache {
@@ -31,8 +29,8 @@ public class ConcurrentHashMapCache {
     /**
      * 存放一个缓存对象，默认保存时间12小时
      *
-     * @param cacheName
-     * @param obj
+     * @param cacheName 缓存key
+     * @param obj 缓存对象
      */
     public static void put(String cacheName, Object obj) {
         put(cacheName, obj, CACHE_HOLD_TIME_12H);
@@ -41,9 +39,9 @@ public class ConcurrentHashMapCache {
     /**
      * 存放一个缓存对象，保存时间为holdTime
      *
-     * @param cacheName
-     * @param obj
-     * @param holdTime
+     * @param cacheName 缓存key
+     * @param obj 缓存对象
+     * @param holdTime 过期时间
      */
     public static void put(String cacheName, Object obj, long holdTime) {
         CACHE_MAP.put(cacheName, obj);
@@ -55,8 +53,8 @@ public class ConcurrentHashMapCache {
     /**
      * 取出一个缓存对象
      *
-     * @param cacheName
-     * @return
+     * @param cacheName 缓存key
+     * @return 缓存对象
      */
     public static Object get(String cacheName) {
         if (checkCacheName(cacheName)) {
@@ -75,7 +73,7 @@ public class ConcurrentHashMapCache {
     /**
      * 删除某个缓存
      *
-     * @param cacheName
+     * @param cacheName 缓存key
      */
     public static void remove(String cacheName) {
         CACHE_MAP.remove(cacheName);
@@ -87,8 +85,8 @@ public class ConcurrentHashMapCache {
      * 若不存在，则返回false
      * 若存在，检查其是否已过有效期，如果已经过了则删除该缓存并返回false
      *
-     * @param cacheName
-     * @return
+     * @param cacheName 缓存key
+     * @return 缓存对象是否存在
      */
     public static boolean checkCacheName(String cacheName) {
         Long cacheHoldTime = (Long) CACHE_MAP.get(cacheName + "_HoldTime");
@@ -106,7 +104,7 @@ public class ConcurrentHashMapCache {
     /**
      * 获取缓存大小
      *
-     * @return
+     * @return 缓存大小
      */
     public Integer size() {
         if (null != CACHE_MAP && CACHE_MAP.size() > 0) {
@@ -118,8 +116,8 @@ public class ConcurrentHashMapCache {
     /**
      * 判断缓存的key是否存在
      *
-     * @param cacheName
-     * @return
+     * @param cacheName 缓存key
+     * @return 缓存对象是否存在
      */
     public boolean isExist(String cacheName) {
         if (!checkCacheName(cacheName)) {

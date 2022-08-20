@@ -6,8 +6,7 @@ import java.util.Map;
 
 /**
  * @author chanmufeng
- * @description 请求实体的公共父类
- * @date 2021/8/4
+ * 请求实体的公共父类
  */
 @Data
 public class BaseRequestVo {

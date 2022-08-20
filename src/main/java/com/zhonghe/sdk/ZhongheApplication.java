@@ -6,9 +6,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 /**
  * @author huiyingzhang
- * @ClassName ZhongheApplication
- * @description
- * @date 2022/8/12 9:01
  */
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class ZhongheApplication {

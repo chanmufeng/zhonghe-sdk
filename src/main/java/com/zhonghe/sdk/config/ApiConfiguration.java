@@ -8,11 +8,9 @@ import org.springframework.util.StringUtils;
 
 /**
  * @author huiyingzhang
- * @ClassName ApiConfiguration
- * @description 应用相关配置信息
- * @date 2022/8/13 9:08
+ * 应用相关配置信息
  */
-@Component //注册bean
+@Component
 @ConfigurationProperties(prefix = "zhonghe")
 public class ApiConfiguration {
 

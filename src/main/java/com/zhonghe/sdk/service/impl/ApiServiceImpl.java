@@ -18,33 +18,37 @@ import static com.zhonghe.sdk.cache.ConcurrentHashMapCache.ACCESS_TOKEN_KEY;
 
 /**
  * @author huiyingzhang
- * @ClassName ApiServiceImpl
- * @description api调用接口
- * @date 2022/8/11 16:48
+ * api调用接口
  */
-@Service
 public class ApiServiceImpl implements ApiService {
 
     /**
      * 获取配置中的appKey
      */
-    String appKey = ApiConfiguration.getAppKey();
+    private String appKey;
 
     /**
      * 获取appSecret
      */
-    String appSecret = ApiConfiguration.getAppSecret();
+    private String appSecret;
 
     /**
      * 获取配置中的url
      */
     String url = ApiConfiguration.getUrlPrefix();
 
+    public ApiServiceImpl(String appKey, String appSecret) {
+        this.appKey = appKey;
+        this.appSecret = appSecret;
+    }
+
+    public ApiServiceImpl() {
+    }
+
     /**
      * 计算签名
      */
-    SignUtil u = new SignUtil();
-
+//    SignUtil u = new SignUtil();
     @Override
     public String getToken(String appKey, String appSecret) {
         try {
@@ -56,7 +60,7 @@ public class ApiServiceImpl implements ApiService {
             params.put("appKey", appKey);
             params.put("appSecret", appSecret);
 
-            BaseRequestVo update = u.update(params, appKey, appSecret);
+            BaseRequestVo update = SignUtil.update(params, appKey, appSecret);
             String reqParams = JSONArray.toJSON(update).toString();
             String token = "";
             JSONObject res = HttpGetWithEntity.sendJsonByGetReq(url + "token", reqParams, "UTF-8");
@@ -86,7 +90,7 @@ public class ApiServiceImpl implements ApiService {
             String token = getToken(appKey, appSecret);
             params.put("token", token);
 
-            BaseRequestVo update = u.update(params, appKey, appSecret);
+            BaseRequestVo update = SignUtil.update(params, appKey, appSecret);
             String reqParams = JSONArray.toJSON(update).toString();
             return HttpGetWithEntity.sendJsonByGetReq(url + "device/list", reqParams, "UTF-8");
 
@@ -106,7 +110,7 @@ public class ApiServiceImpl implements ApiService {
             String token = getToken(appKey, appSecret);
             params.put("token", token);
 
-            BaseRequestVo update = u.update(params, appKey, appSecret);
+            BaseRequestVo update = SignUtil.update(params, appKey, appSecret);
             String reqParams = JSONArray.toJSON(update).toString();
             return HttpGetWithEntity.sendJsonByGetReq(url + "device/latestData", reqParams, "UTF-8");
 
@@ -128,7 +132,7 @@ public class ApiServiceImpl implements ApiService {
             String token = getToken(appKey, appSecret);
             params.put("token", token);
 
-            BaseRequestVo update = u.update(params, appKey, appSecret);
+            BaseRequestVo update = SignUtil.update(params, appKey, appSecret);
             String reqParams = JSONArray.toJSON(update).toString();
             return HttpGetWithEntity.sendJsonByGetReq(url + "device/order", reqParams, "UTF-8");
 
@@ -149,7 +153,7 @@ public class ApiServiceImpl implements ApiService {
             String token = getToken(appKey, appSecret);
             params.put("token", token);
 
-            BaseRequestVo update = u.update(params, appKey, appSecret);
+            BaseRequestVo update = SignUtil.update(params, appKey, appSecret);
             String reqParams = JSONArray.toJSON(update).toString();
             return HttpGetWithEntity.sendJsonByGetReq(url + "pestStation/list", reqParams, "UTF-8");
 
@@ -169,7 +173,7 @@ public class ApiServiceImpl implements ApiService {
             String token = getToken(appKey, appSecret);
             params.put("token", token);
 
-            BaseRequestVo update = u.update(params, appKey, appSecret);
+            BaseRequestVo update = SignUtil.update(params, appKey, appSecret);
             String reqParams = JSONArray.toJSON(update).toString();
             return HttpGetWithEntity.sendJsonByGetReq(url + "pestStation/latestData", reqParams, "UTF-8");
 
@@ -190,7 +194,7 @@ public class ApiServiceImpl implements ApiService {
             String token = getToken(appKey, appSecret);
             params.put("token", token);
 
-            BaseRequestVo update = u.update(params, appKey, appSecret);
+            BaseRequestVo update = SignUtil.update(params, appKey, appSecret);
             String reqParams = JSONArray.toJSON(update).toString();
             return HttpGetWithEntity.sendJsonByGetReq(url + "pestStation/dayReports", reqParams, "UTF-8");
 

@@ -8,9 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * @author huiyingzhang
- * @ClassName testController
- * @description api调用测试
- * @date 2022/8/11 16:45
+ * api调用测试
  */
 @SpringBootTest(classes = ZhongheApplication.class)
 @RunWith(SpringRunner.class)
