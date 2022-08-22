@@ -15,9 +15,6 @@ import java.net.URI;
 
 /**
  * @author huiyingzhang
- * @ClassName HttpGetWithEntity
- * @description
- * @date 2022/8/12 8:09
  */
 public class HttpGetWithEntity extends HttpEntityEnclosingRequestBase {
     private final static String METHOD_NAME = "GET";

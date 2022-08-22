@@ -4,15 +4,13 @@ import java.util.Date;
 
 /**
  * @author huiyingzhang
- * @ClassName ApiService
- * @description api调用接口
- * @date 2022/8/11 16:47
+ * api调用接口
  */
 public interface ApiService {
 
     /**
-     * @param appKey
-     * @param appSecret
+     * @param appKey appkey
+     * @param appSecret appSecret
      *
      * 获取token
      * @return token
