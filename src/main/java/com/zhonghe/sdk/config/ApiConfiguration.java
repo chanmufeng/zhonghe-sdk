@@ -9,8 +9,9 @@ import org.springframework.util.StringUtils;
 /**
  * @author huiyingzhang
  * 应用相关配置信息
+ * 2022/8/13 9:08
  */
-@Component
+@Component //注册bean
 @ConfigurationProperties(prefix = "zhonghe")
 public class ApiConfiguration {
 
@@ -18,10 +19,12 @@ public class ApiConfiguration {
      * 应用key
      */
     private static String appKey;
+
     /**
      * 应用secret
      */
     private static String appSecret;
+
     /**
      * 调用链接urlPrefix
      */
@@ -58,9 +61,9 @@ public class ApiConfiguration {
     }
 
     public static void notBlank(String param) {
-        if (StringUtils.isEmpty(param)) {
-            throw new ApiException("参数不能为空,请查看是否添加相关配置");
-        }
+//        if (StringUtils.isEmpty(param)) {
+//            throw new ApiException("参数不能为空,请查看是否添加相关配置");
+//        }
     }
 
 }

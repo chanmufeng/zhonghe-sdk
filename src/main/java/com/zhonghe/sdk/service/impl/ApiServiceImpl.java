@@ -35,7 +35,7 @@ public class ApiServiceImpl implements ApiService {
     /**
      * 获取配置中的url
      */
-    String url = ApiConfiguration.getUrlPrefix();
+    String url = "http://www.sdzhiot.top:8080/api/v1/";
 
     public ApiServiceImpl(String appKey, String appSecret) {
         this.appKey = appKey;
