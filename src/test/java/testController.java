@@ -1,10 +1,13 @@
 import com.zhonghe.sdk.ZhongheApplication;
-import com.zhonghe.sdk.service.ApiService;
+import com.zhonghe.sdk.factory.ZhongheApiProxyFactory;
+import com.zhonghe.sdk.service.ApiService;;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author huiyingzhang
@@ -14,44 +17,60 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 public class testController {
 
-    @Autowired
-    ApiService apiService;
+    ApiService apiService = ZhongheApiProxyFactory.createProxy(ApiService.class);
+
 
     @Test
-    public void test1(){
-        Object s = apiService.getDeviceList(1, 10);
+    public void test1() {
+        Map<String, Object> params = new HashMap<>();
+        params.put("pageNum", 1);
+        params.put("pageSize", 10);
+        Object s = apiService.getDeviceList(params);
         System.out.println("获取设备列表 = " + s);
     }
 
     @Test
     public void test2() {
-        Object s = apiService.getDeviceLatestData("DE2DB30823F1");
+        Map<String, Object> params = new HashMap<>();
+        params.put("sno", "DE2DB30823F1");
+        Object s = apiService.getDeviceLatestData(params);
         System.out.println("获取设备最新数据 = " + s);
     }
 
     @Test
     public void test3() {
-        Object s = apiService.getDeviceOrder("DE2DB30823F1", "DE2DB30823F101", 1);
+        Map<String, Object> params = new HashMap<>();
+        params.put("sno", "DE2DB30823F1");
+        params.put("sensorId", "DE2DB30823F101");
+        params.put("val", 1);
+        Object s = apiService.getDeviceOrder(params);
         System.out.println("控制设备 = " + s);
     }
 
     @Test
     public void test4() {
-        Object s = apiService.getPestStationList(1, 10);
+        Map<String, Object> params = new HashMap<>();
+        params.put("pageNum", 1);
+        params.put("pageSize", 10);
+        Object s = apiService.getPestStationList(params);
         System.out.println("获取虫情站列表 = " + s);
     }
 
     @Test
     public void test5() {
-        Object s = apiService.getPestStationLatestData("171CB7400943");
+        Map<String, Object> params = new HashMap<>();
+        params.put("sno", "171CB7400943");
+        Object s = apiService.getPestStationLatestData(params);
         System.out.println("获取虫情站最新数据 = " + s);
     }
 
     @Test
     public void test6() {
-        String dateStr = "2022-05-13";
+        Map<String, Object> params = new HashMap<>();
+        params.put("sno", "171CB7400943");
+        params.put("date", "2022-05-13");
 
-        Object s = apiService.getPestStationDayReports("171CB7400943", dateStr);
+        Object s = apiService.getPestStationDayReports(params);
         System.out.println("虫情站日报表 = " + s);
     }
 }

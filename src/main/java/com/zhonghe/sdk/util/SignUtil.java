@@ -1,37 +1,61 @@
 package com.zhonghe.sdk.util;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.zhonghe.sdk.cache.ConcurrentHashMapCache;
+import com.zhonghe.sdk.config.ApiConfiguration;
 import com.zhonghe.sdk.domain.BaseRequestVo;
+import lombok.SneakyThrows;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static com.zhonghe.sdk.cache.ConcurrentHashMapCache.ACCESS_TOKEN_KEY;
+
 /**
  * @author huiyingzhang
- * 计算签名
+ * 计算签名、获取token
  */
 public class SignUtil {
 
-    private static Long timestamp;
-    private static String signature;
+    private static String appKey = ApiConfiguration.getAppKey();
+    private static String appSecret = ApiConfiguration.getAppSecret();
 
-    public static BaseRequestVo update(Map<String, Object> params, String appKey, String appSecret) {
+    @SneakyThrows
+    public static String getToken() {
+        JSONObject cacheObject = (JSONObject) ConcurrentHashMapCache.get(ACCESS_TOKEN_KEY + appKey);
+
+        if (cacheObject != null) {
+            return cacheObject.get("accessToken").toString();
+        }
+        Map<String, Object> params = new HashMap<>();
+        params.put("appKey", appKey);
+        params.put("appSecret", appSecret);
+
+        String reqParams = SignUtil.update(params);
+
+        return HttpGetWithEntity.getToken("token", reqParams, appKey);
+
+    }
+
+    public static String update(Map<String, Object> params) {
         BaseRequestVo request = new BaseRequestVo();
-        timestamp = System.currentTimeMillis() / 1000;
         BaseRequestVo.SystemDTO systemDTO = new BaseRequestVo.SystemDTO();
         systemDTO.setAppKey(appKey);
-        systemDTO.setTime(timestamp);
+        systemDTO.setTime(System.currentTimeMillis() / 1000);
         request.setSystem(systemDTO);
 
         request.setParams(params);
-        signature = ComputeSign(request, appSecret);
-        systemDTO.setSign(signature);
-        return request;
+        systemDTO.setSign(ComputeSign(request));
+        return JSONArray.toJSON(request).toString();
     }
 
-    private static String ComputeSign(BaseRequestVo request, String appSecret) {
+    @SneakyThrows
+    private static String ComputeSign(BaseRequestVo request) {
         BaseRequestVo.SystemDTO system = request.getSystem();
         Map<String, Object> map = request.getParams();
 
@@ -44,13 +68,7 @@ public class SignUtil {
             sb.append(entry.getKey()).append(entry.getValue()).append(",");
         }
 
-        String expectedSign = "";
-        try {
-            expectedSign = DigestUtils.md5Hex(sb.toString().getBytes("UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return expectedSign;
+        return DigestUtils.md5Hex(sb.toString().getBytes("UTF-8"));
     }
 
     /**

@@ -61,9 +61,9 @@ public class ApiConfiguration {
     }
 
     public static void notBlank(String param) {
-//        if (StringUtils.isEmpty(param)) {
-//            throw new ApiException("参数不能为空,请查看是否添加相关配置");
-//        }
+        if (StringUtils.isEmpty(param)) {
+            throw new ApiException("参数不能为空,请查看是否添加相关配置");
+        }
     }
 
 }
