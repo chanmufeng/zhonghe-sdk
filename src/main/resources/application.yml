@@ -1,7 +1,7 @@
 # 项目相关配置
 zhonghe:
-  appKey: 2c0d0e183de34f1dabb3fee9afd03199
-  appSecret: c2c353fcef1e40779d17165ba316e8ff
+  appKey: xxx
+  appSecret: xxx
   urlPrefix: http://www.sdzhiot.top:8080/api/v1/
 
 # 日志配置
