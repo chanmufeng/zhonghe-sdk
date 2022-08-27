@@ -20,6 +20,10 @@ import static com.zhonghe.sdk.util.SignUtil.getToken;
  */
 public class ZhongheApiProxyFactory {
 
+    public static ZhongheApiProxyFactory build() {
+        return new ZhongheApiProxyFactory();
+    }
+
     /**
      * 创建代理对象
      *
@@ -27,7 +31,7 @@ public class ZhongheApiProxyFactory {
      * @param <T>
      * @return
      */
-    public static <T> T createProxy(Class<T> apiService) {
+    public <T> T createProxy(Class<T> apiService) {
         return (T) Proxy.newProxyInstance(apiService.getClassLoader(), new Class[]{apiService}, new ApiProxyHandler());
     }
 

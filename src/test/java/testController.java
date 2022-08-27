@@ -1,3 +1,4 @@
+import com.zhonghe.sdk.ApiHelper;
 import com.zhonghe.sdk.ZhongheApplication;
 import com.zhonghe.sdk.factory.ZhongheApiProxyFactory;
 import com.zhonghe.sdk.service.ApiService;;
@@ -17,8 +18,7 @@ import java.util.Map;
 @RunWith(SpringRunner.class)
 public class testController {
 
-    ApiService apiService = ZhongheApiProxyFactory.createProxy(ApiService.class);
-
+    ApiService apiService = ApiHelper.build().creatApi(ApiService.class);
 
     @Test
     public void test1() {
