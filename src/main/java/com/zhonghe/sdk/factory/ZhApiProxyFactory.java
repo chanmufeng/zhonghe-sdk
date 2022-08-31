@@ -15,27 +15,23 @@ import static com.zhonghe.sdk.util.SignUtil.getToken;
 
 /**
  * @author huiyingzhang
- * @description
- * @date 2022/8/27 8:57
+ * 2022/8/27 8:57
  */
-public class ZhongheApiProxyFactory {
+@SuppressWarnings("unchecked")
+public class ZhApiProxyFactory {
 
-    public static ZhongheApiProxyFactory build() {
-        return new ZhongheApiProxyFactory();
+    public static ZhApiProxyFactory build() {
+        return new ZhApiProxyFactory();
     }
 
     /**
      * 创建代理对象
-     *
-     * @param apiService
-     * @param <T>
-     * @return
      */
     public <T> T createProxy(Class<T> apiService) {
         return (T) Proxy.newProxyInstance(apiService.getClassLoader(), new Class[]{apiService}, new ApiProxyHandler());
     }
 
-    static class ApiProxyHandler implements InvocationHandler {
+    class ApiProxyHandler implements InvocationHandler {
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Exception {
             try {
@@ -55,6 +51,5 @@ public class ZhongheApiProxyFactory {
             return jsonObject;
         }
     }
-
 
 }

@@ -4,8 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * @author huiyingzhang
- * @description
- * @date 2022/8/26 11:14
+ * 2022/8/26 11:14
  */
 @Documented
 @Target(ElementType.METHOD)

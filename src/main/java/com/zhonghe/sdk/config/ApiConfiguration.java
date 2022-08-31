@@ -11,7 +11,7 @@ import org.springframework.util.StringUtils;
  * 应用相关配置信息
  * 2022/8/13 9:08
  */
-@Component //注册bean
+@Component
 @ConfigurationProperties(prefix = "zhonghe")
 public class ApiConfiguration {
 
