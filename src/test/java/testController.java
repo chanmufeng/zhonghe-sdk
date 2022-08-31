@@ -1,10 +1,11 @@
 import com.zhonghe.sdk.ApiHelper;
 import com.zhonghe.sdk.ZhongheApplication;
-import com.zhonghe.sdk.factory.ZhongheApiProxyFactory;
 import com.zhonghe.sdk.service.ApiService;;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.stereotype.Repository;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashMap;
@@ -18,7 +19,7 @@ import java.util.Map;
 @RunWith(SpringRunner.class)
 public class testController {
 
-    ApiService apiService = ApiHelper.build().creatApi(ApiService.class);
+    ApiService apiService = ApiHelper.newApi();
 
     @Test
     public void test1() {

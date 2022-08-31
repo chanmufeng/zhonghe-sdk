@@ -1,8 +1,6 @@
 package com.zhonghe.sdk.cache;
 
-import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Bean;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
